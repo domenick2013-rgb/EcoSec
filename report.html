@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аналітичний звіт | Вадим Миць</title>
+    <meta name="description" content="Аналітичний звіт з дослідження загроз та рекомендацій для країни.">
+    <meta name="author" content="Вадим Миць">
+    <title>Аналітичний звіт | Вадим Миць - EcoSec</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">EcoSec</a>
+            <a href="index.html" class="logo"><i class="fa-solid fa-shield-halved"></i> EcoSec</a>
+            
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Перемикач теми"><i class="fa-solid fa-moon"></i></button>
+                <button id="menu-toggle" aria-label="Меню" class="mobile-only"><i class="fa-solid fa-bars"></i></button>
+            </div>
+
             <div class="nav-links">
                 <a href="index.html">Головна</a>
                 <a href="resume.html">Резюме</a>
@@ -21,11 +31,11 @@
 
     <main>
         <h1>Аналітичний звіт</h1>
-        <p>Дослідження країни впродовж семестру.</p>
+        <p class="subtitle"><i class="fa-solid fa-earth-americas"></i> Дослідження країни впродовж семестру.</p>
         
         <div class="card">
-            <h2>5 основних загроз</h2>
-            <ol>
+            <h2><i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i> 5 основних загроз</h2>
+            <ol class="threats-list">
                 <li><em>Загроза 1</em></li>
                 <li><em>Загроза 2</em></li>
                 <li><em>Загроза 3</em></li>
@@ -35,8 +45,8 @@
         </div>
 
         <div class="card">
-            <h2>5 рекомендацій для країни</h2>
-            <ul>
+            <h2><i class="fa-solid fa-lightbulb" style="color: #eab308;"></i> 5 рекомендацій для країни</h2>
+            <ul class="skills-list">
                 <li><em>Рекомендація 1</em></li>
                 <li><em>Рекомендація 2</em></li>
                 <li><em>Рекомендація 3</em></li>

@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Головна | Вадим Миць</title>
+    <meta name="description" content="EcoSec Project - Персональний аналітичний вебсайт студента Вадима Миця. Дисципліна: Інформаційні технології в забезпеченні економічної безпеки держави.">
+    <meta name="author" content="Вадим Миць">
+    <title>Головна | Вадим Миць - EcoSec</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">EcoSec</a>
+            <a href="index.html" class="logo"><i class="fa-solid fa-shield-halved"></i> EcoSec</a>
+            
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Перемикач теми"><i class="fa-solid fa-moon"></i></button>
+                <button id="menu-toggle" aria-label="Меню" class="mobile-only"><i class="fa-solid fa-bars"></i></button>
+            </div>
+
             <div class="nav-links">
                 <a href="index.html" class="active">Головна</a>
                 <a href="resume.html">Резюме</a>
@@ -21,11 +32,13 @@
 
     <main>
         <h1>Головна інформація</h1>
+        <p class="subtitle">Вітаю на моєму аналітичному порталі</p>
+        
         <div class="card">
-            <p><strong>ПІБ:</strong> Вадим Миць</p>
-            <p><strong>Факультет:</strong> Факультет інформаційних технологій</p>
-            <p><strong>Група:</strong> ФІТ 1-6мз</p>
-            <p><strong>Дисципліна:</strong> «Інформаційні технології в забезпеченні економічної безпеки держави»</p>
+            <p><strong><i class="fa-solid fa-user"></i> ПІБ:</strong> Вадим Миць</p>
+            <p><strong><i class="fa-solid fa-building-columns"></i> Факультет:</strong> Факультет інформаційних технологій</p>
+            <p><strong><i class="fa-solid fa-users"></i> Група:</strong> ФІТ 1-6мз</p>
+            <p><strong><i class="fa-solid fa-book"></i> Дисципліна:</strong> «Інформаційні технології в забезпеченні економічної безпеки держави»</p>
         </div>
     </main>
 

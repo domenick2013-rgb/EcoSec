@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме | Вадим Миць</title>
+    <meta name="description" content="Резюме Вадима Миця - Cybersecurity / Network Security Engineer.">
+    <meta name="author" content="Вадим Миць">
+    <title>Резюме | Вадим Миць - EcoSec</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo">EcoSec</a>
+            <a href="index.html" class="logo"><i class="fa-solid fa-shield-halved"></i> EcoSec</a>
+            
+            <div class="nav-controls">
+                <button id="theme-toggle" aria-label="Перемикач теми"><i class="fa-solid fa-moon"></i></button>
+                <button id="menu-toggle" aria-label="Меню" class="mobile-only"><i class="fa-solid fa-bars"></i></button>
+            </div>
+
             <div class="nav-links">
                 <a href="index.html">Головна</a>
                 <a href="resume.html" class="active">Резюме</a>
@@ -20,16 +30,23 @@
     </header>
 
     <main>
-        <h1>Миць Вадим Володимирович</h1>
-        <p class="subtitle">Cybersecurity / Network Security Engineer</p>
+        <div class="header-with-btn">
+            <div>
+                <h1>Миць Вадим Володимирович</h1>
+                <p class="subtitle">Cybersecurity / Network Security Engineer</p>
+            </div>
+            <a href="#" class="btn-primary" onclick="alert('У майбутньому тут буде завантаження PDF-файлу!')">
+                <i class="fa-solid fa-download"></i> Завантажити CV
+            </a>
+        </div>
         
         <div class="card">
             <h2>Контакти</h2>
-            <ul>
-                <li><strong>Телефон:</strong> +380-93-414-43-57</li>
-                <li><strong>Email:</strong> myts-vadim@ukr.net</li>
-                <li><strong>Локація:</strong> м. Бровари</li>
-                <li><strong>Дата народження:</strong> 02.03.1995</li>
+            <ul class="contact-list">
+                <li><i class="fa-solid fa-phone"></i> <strong>Телефон:</strong> +380-93-414-43-57</li>
+                <li><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> myts-vadim@ukr.net</li>
+                <li><i class="fa-solid fa-location-dot"></i> <strong>Локація:</strong> м. Бровари</li>
+                <li><i class="fa-solid fa-calendar"></i> <strong>Дата народження:</strong> 02.03.1995</li>
             </ul>
         </div>
 
@@ -40,7 +57,7 @@
 
         <div class="card">
             <h2>Технічні навички</h2>
-            <ul>
+            <ul class="skills-list">
                 <li><strong>Security & Firewalls:</strong> Cisco Firepower (1120, 2130, 3120), pfSense (Firewall rules, NAT, Traffic Shaping).</li>
                 <li><strong>Monitoring & Defense:</strong> SIEM, XDR/EDR.</li>
                 <li><strong>Networking:</strong> Cisco Switches (1000, 2960, 9300, Nexus), Cisco Routers (8200, 8300).</li>
@@ -52,7 +69,7 @@
 
         <div class="card">
             <h2>Особисті якості</h2>
-            <ul>
+            <ul class="skills-list">
                 <li>Аналітичне мислення</li>
                 <li>Вміння працювати в команді</li>
                 <li>Стресостійкість</li>
@@ -64,8 +81,8 @@
             
             <div class="job-entry">
                 <h3>Cybersecurity Analyst / Security Engineer</h3>
-                <p class="job-meta">Державна служба України з надзвичайних ситуацій | 2023 – Сьогодення (2 роки)</p>
-                <ul>
+                <p class="job-meta"><i class="fa-solid fa-building-shield"></i> Державна служба України з надзвичайних ситуацій | 2023 – Сьогодення (2 роки)</p>
+                <ul class="skills-list">
                     <li>Забезпечення комплексного кіберзахисту корпоративної інфраструктури.</li>
                     <li>Моніторинг та реагування на інциденти за допомогою SIEM-систем та XDR/EDR рішень.</li>
                     <li>Налаштування політик безпеки та контроль доступу на базі Cisco Firepower.</li>
@@ -77,8 +94,8 @@
 
             <div class="job-entry">
                 <h3>Network / Telecommunications Engineer</h3>
-                <p class="job-meta">Державна служба України з надзвичайних ситуацій | 2021 – 2023 (2 роки)</p>
-                <ul>
+                <p class="job-meta"><i class="fa-solid fa-network-wired"></i> Державна служба України з надзвичайних ситуацій | 2021 – 2023 (2 роки)</p>
+                <ul class="skills-list">
                     <li>Проектування та підтримка мереж на базі Cisco (Nexus, Catalyst, ISR).</li>
                     <li>Побудова захищених VPN-тунелів (IPSec, OVPN) між віддаленими офісами з використанням рішень Cisco та pfSense.</li>
                     <li>Конфігурація динамічної маршрутизації (OSPF) та сегментація мережі.</li>
@@ -90,8 +107,8 @@
 
             <div class="job-entry">
                 <h3>IT Support Specialist (HelpDesk)</h3>
-                <p class="job-meta">Державна служба України з надзвичайних ситуацій | Жовтень 2018 – 2021 (3 роки)</p>
-                <ul>
+                <p class="job-meta"><i class="fa-solid fa-headset"></i> Державна служба України з надзвичайних ситуацій | Жовтень 2018 – 2021 (3 роки)</p>
+                <ul class="skills-list">
                     <li>Надання технічної підтримки користувачам (рівні L1/L2), вирішення апаратних та програмних інцидентів.</li>
                     <li>Встановлення, налаштування та адміністрування робочих станцій, периферійного та базового мережевого обладнання.</li>
                     <li>Ведення звітності та обробка заявок у системі Service Desk.</li>
@@ -101,10 +118,10 @@
 
         <div class="card">
             <h2>Освіта</h2>
-            <p><strong>Ступінь:</strong> Бакалавр з програмної інженерії</p>
-            <p><strong>Спеціальність:</strong> "Програмна інженерія"</p>
-            <p><strong>Навчальний заклад:</strong> Відкритий міжнародний університет розвитку людини «Україна»</p>
-            <p><strong>Рік закінчення:</strong> 2018</p>
+            <p><strong><i class="fa-solid fa-graduation-cap"></i> Ступінь:</strong> Бакалавр з програмної інженерії</p>
+            <p><strong><i class="fa-solid fa-laptop-code"></i> Спеціальність:</strong> "Програмна інженерія"</p>
+            <p><strong><i class="fa-solid fa-university"></i> Навчальний заклад:</strong> Відкритий міжнародний університет розвитку людини «Україна»</p>
+            <p><strong><i class="fa-solid fa-calendar-check"></i> Рік закінчення:</strong> 2018</p>
         </div>
     </main>
 

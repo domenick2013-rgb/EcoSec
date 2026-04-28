@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
+    /* Light Theme */
     --bg-color: #f3f4f6;
     --text-main: #1f2937;
     --text-muted: #4b5563;
@@ -10,6 +11,23 @@
     --nav-bg: rgba(255, 255, 255, 0.7);
     --border: rgba(255, 255, 255, 0.8);
     --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+    --gradient-bg-1: #f6f8fd;
+    --gradient-bg-2: #f1f5f9;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme */
+    --bg-color: #111827;
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+    --accent: #60a5fa;
+    --accent-glow: rgba(96, 165, 250, 0.15);
+    --card-bg: rgba(31, 41, 55, 0.7);
+    --nav-bg: rgba(17, 24, 39, 0.8);
+    --border: rgba(55, 65, 81, 0.8);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --gradient-bg-1: #111827;
+    --gradient-bg-2: #1f2937;
 }
 
 * {
@@ -20,7 +38,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #f6f8fd 0%, #f1f5f9 100%);
+    background: linear-gradient(135deg, var(--gradient-bg-1) 0%, var(--gradient-bg-2) 100%);
     background-attachment: fixed;
     color: var(--text-main);
     line-height: 1.7;
@@ -28,6 +46,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Typography */
@@ -38,7 +57,7 @@ h1, h2, h3, .logo {
 h1 {
     font-size: 3rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #111827, #2563eb);
+    background: linear-gradient(135deg, var(--text-main), var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
@@ -62,7 +81,7 @@ h2 {
     margin-bottom: 1.5rem;
     position: relative;
     display: inline-block;
-    color: #1f2937;
+    color: var(--text-main);
 }
 
 h2::after {
@@ -109,6 +128,7 @@ header {
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 nav {
@@ -118,6 +138,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
@@ -125,12 +146,41 @@ nav {
     font-weight: 700;
     text-decoration: none;
     color: var(--text-main);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .logo:hover {
-    transform: scale(1.05) rotate(-2deg);
+    transform: scale(1.05);
     color: var(--accent);
+}
+
+.nav-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-controls button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-controls button:hover {
+    color: var(--accent);
+}
+
+.mobile-only {
+    display: none;
 }
 
 .nav-links {
@@ -167,6 +217,36 @@ nav {
     width: 100%;
 }
 
+/* Header With Button Layout */
+.header-with-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--accent);
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+    background: #1d4ed8;
+}
+
 /* Main */
 main {
     flex: 1;
@@ -198,8 +278,12 @@ main {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.08);
-    border-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.1);
+    border-color: var(--accent);
+}
+
+[data-theme="dark"] .card:hover {
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* Lists */
@@ -208,14 +292,14 @@ ul, ol {
     padding: 0;
 }
 
-ul li {
+ul.skills-list li, ol.threats-list li {
     position: relative;
     padding-left: 1.8rem;
     margin-bottom: 0.8rem;
     color: var(--text-muted);
 }
 
-ul li::before {
+ul.skills-list li::before, ol.threats-list li::before {
     content: '→';
     position: absolute;
     left: 0;
@@ -224,8 +308,22 @@ ul li::before {
     transition: transform 0.2s ease;
 }
 
-ul li:hover::before {
+ul.skills-list li:hover::before, ol.threats-list li:hover::before {
     transform: translateX(4px);
+}
+
+ul.contact-list li {
+    margin-bottom: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+ul.contact-list li i {
+    color: var(--accent);
+    width: 20px;
+    text-align: center;
 }
 
 /* Resume Specifics */
@@ -236,7 +334,7 @@ ul li:hover::before {
     margin-bottom: 1rem;
     letter-spacing: 0.02em;
     display: inline-block;
-    padding: 0.2rem 0.8rem;
+    padding: 0.3rem 0.8rem;
     background: var(--accent-glow);
     border-radius: 20px;
 }
@@ -244,7 +342,7 @@ ul li:hover::before {
 .separator {
     border: none;
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+    background: linear-gradient(to right, transparent, var(--border), transparent);
     margin: 2.5rem 0;
 }
 
@@ -266,19 +364,41 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 1rem;
+    .mobile-only {
+        display: flex;
     }
+    
     .nav-links {
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem;
+        gap: 1rem;
+        box-shadow: var(--shadow);
     }
+    
+    .nav-links.show {
+        display: flex;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+    
     h1 {
         font-size: 2.2rem;
     }
     .card {
         padding: 1.5rem;
+    }
+    .header-with-btn {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
