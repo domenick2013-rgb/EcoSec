@@ -51,29 +51,77 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 4. Mobile Menu Toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-        const icon = menuToggle.querySelector('i');
-        if(navLinks.classList.contains('show')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-xmark');
-        } else {
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
-        }
-    });
+    // 4. PDF Generation using html2pdf
+    const downloadBtn = document.getElementById('download-pdf-btn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // --- Robust PDF Generation using an Iframe ---
+
+            // 1. Update UI to show loading state
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Генеруємо PDF...';
+            downloadBtn.disabled = true;
+
+            // 2. Create a hidden iframe to act as a clean rendering environment
+            const iframe = document.createElement('iframe');
+            iframe.style.position = 'absolute';
+            iframe.style.width = '0';
+            iframe.style.height = '0';
+            iframe.style.border = 'none';
+            document.body.appendChild(iframe);
+
+            const iframeDoc = iframe.contentWindow.document;
+
+            // 3. Get the content to print and prepare it
+            const contentToPrint = document.getElementById('resume-content').cloneNode(true);
+            contentToPrint.classList.add('pdf-export'); // Apply special print styles
+
+            // 4. Write content and styles into the iframe
+            iframeDoc.open();
+            iframeDoc.write(`
+                <html>
+                <head>
+                    <link rel="stylesheet" href="${window.location.origin}/style.css">
+                    <style>
+                        /* Ensure body has no margin and content has a defined width */
+                        body { margin: 0; padding: 0; background: white; }
+                        #resume-content { width: 800px !important; } 
+                    </style>
+                </head>
+                <body></body>
+                </html>
+            `);
+            iframeDoc.body.appendChild(contentToPrint);
+            iframeDoc.close();
+
+            // 5. Wait for the iframe content (especially styles) to load, then generate PDF
+            iframe.onload = () => {
+                // Add a small delay to ensure all styles from the external stylesheet are applied
+                setTimeout(() => {
+                    const opt = {
+                        margin:       10,
+                        filename:     'Myts_Vadym_Resume.pdf',
+                        image:        { type: 'jpeg', quality: 0.98 },
+                        html2canvas:  { scale: 2, useCORS: true, logging: false, width: 800 },
+                        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                    };
+
+                    html2pdf().set(opt).from(contentToPrint).save().finally(() => {
+                        // 6. Cleanup: Restore button and remove the iframe
+                        downloadBtn.innerHTML = originalText;
+                        downloadBtn.disabled = false;
+                        document.body.removeChild(iframe);
+                    });
+                }, 200); // 200ms delay for styles to apply
+            };
+        });
+    }
 
     // 5. Interactive Background (Dynamic Gradient Shift)
     const body = document.querySelector('body');
     body.addEventListener('mousemove', (e) => {
         const x = e.clientX / window.innerWidth;
-        const theme = htmlElement.getAttribute('data-theme');
-        const color1 = theme === 'dark' ? '#111827' : '#f6f8fd';
-        const color2 = theme === 'dark' ? '#1f2937' : '#f1f5f9';
-        body.style.background = `linear-gradient(${135 + (x * 10)}deg, ${color1} 0%, ${color2} 100%)`;
+        body.style.background = `linear-gradient(${135 + (x * 10)}deg, var(--gradient-bg-1) 0%, var(--gradient-bg-2) 100%)`;
     });
 });

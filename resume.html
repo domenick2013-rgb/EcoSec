@@ -9,16 +9,17 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <!-- html2pdf.js for generating PDF on frontend. 'defer' ensures it loads before our script.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+    <script src="script.js" defer></script> 
 </head>
 <body>
-    <header>
+    <header data-html2canvas-ignore="true">
         <nav>
             <a href="index.html" class="logo"><i class="fa-solid fa-shield-halved"></i> EcoSec</a>
             
             <div class="nav-controls">
                 <button id="theme-toggle" aria-label="Перемикач теми"><i class="fa-solid fa-moon"></i></button>
-                <button id="menu-toggle" aria-label="Меню" class="mobile-only"><i class="fa-solid fa-bars"></i></button>
             </div>
 
             <div class="nav-links">
@@ -29,14 +30,14 @@
         </nav>
     </header>
 
-    <main>
+    <main id="resume-content">
         <div class="header-with-btn">
             <div>
                 <h1>Миць Вадим Володимирович</h1>
                 <p class="subtitle">Cybersecurity / Network Security Engineer</p>
             </div>
-            <a href="#" class="btn-primary" onclick="alert('У майбутньому тут буде завантаження PDF-файлу!')">
-                <i class="fa-solid fa-download"></i> Завантажити CV
+            <a href="#" class="btn-primary" id="download-pdf-btn" data-html2canvas-ignore="true">
+                <i class="fa-solid fa-download"></i> Завантажити резюме (PDF)
             </a>
         </div>
         
