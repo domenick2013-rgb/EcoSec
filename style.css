@@ -384,3 +384,12 @@ footer {
         align-items: flex-start;
     }
 }
+
+/* Report Page Icon Colors */
+.fa-arrow-trend-down {
+    color: #ef4444; /* Red for threats */
+}
+
+.fa-arrow-trend-up {
+    color: #22c55e; /* Green for recommendations */
+}
